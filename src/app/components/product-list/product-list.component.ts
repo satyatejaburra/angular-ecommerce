@@ -4,6 +4,8 @@ import { Product } from 'src/app/common/product';
 import { ActivatedRoute } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from 'src/app/common/cart-item';
 
 @Component({
   selector: 'app-product-list',
@@ -23,11 +25,21 @@ theTotalElements:number=0;
 thePreviousKeyword:string;
 
 
-  constructor(private productService: ProductService, private route:ActivatedRoute) { }
+  constructor(private productService: ProductService, private route:ActivatedRoute, private cartService:CartService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(()=>{
     this.listProducts();})
+  }
+
+  addToCart(theProduct: Product) {
+
+    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+
+    // TODO ... do the real work
+    const theCartItem = new CartItem(theProduct);
+
+    this.cartService.addToCart(theCartItem);
   }
 
   handleListProducts()
