@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: "http://localhost:8080/api/products",
+  allProductUrl: "http://localhost:8080/api/products?page=0&size=150",
+  productBynameUrl: "http://localhost:8080/api/products?page=0&size=150",
+  categoryUrl: "http://localhost:8080/api/product-category",
+
+// login zuul url's
+basePostUrl: "http://localhost:8011/ecommerce-users/users"
+
 };
 
 /*

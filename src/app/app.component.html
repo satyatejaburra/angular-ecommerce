@@ -21,8 +21,16 @@
           <div class="header-wrap">
 
             <app-auto-completge></app-auto-completge>
+              <div class="row">
 
-            <app-cart-status></app-cart-status>
+                <button class="au-btn-submit" (click)="login()" >
+                  Login
+                </button>
+
+              </div>
+
+              <app-cart-status></app-cart-status>
+
 
           </div>
           <div class="account-wrap"></div>
@@ -33,6 +41,7 @@
 
     <!-- MAIN CONTENT-->
     <router-outlet></router-outlet>
+
 
   </div>
 </div>
