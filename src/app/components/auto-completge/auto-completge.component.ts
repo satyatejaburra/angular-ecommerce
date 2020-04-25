@@ -22,10 +22,7 @@ theTotalElements:number=0;
 currentCategoryName:string;
 
     constructor(private productService: ProductService, private route:ActivatedRoute, private router:Router) {
-
-   // this.route.paramMap.subscribe(()=>{
-     // this.listProducts();})
-   }
+    }
 
    doSearch()
    {

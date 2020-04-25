@@ -38,8 +38,11 @@ import { PortalModule } from '@angular/cdk/portal';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent as ModalComponent } from './components/modal/modal.component';
+import { Orderdetails } from './common/orderdetails';
+import { OrderComponent } from './components/order/order.component';
 
 const routes: Routes = [
+  { path: 'order', component: OrderComponent },
   { path: 'register', component: RegisterComponent },
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component:ProductDetailsComponent},
