@@ -21,17 +21,22 @@
           <div class="header-wrap">
 
             <app-auto-completge></app-auto-completge>
-              <div class="row">
 
-                <button class="au-btn-submit" (click)="login()" >
-                  Login
-                </button>
+            <div class="row">
 
-              </div>
+              <button class="au-btn-submit" (click)="login()">
+                Login
+              </button>
+            </div>
+            <div class="row">
+              <button class="au-btn-submit" (click)="openModal()">
+                Customer Support
+              </button>
+            </div>
 
-              <app-cart-status></app-cart-status>
 
 
+            <app-cart-status></app-cart-status>
           </div>
           <div class="account-wrap"></div>
         </div>
@@ -41,8 +46,6 @@
 
     <!-- MAIN CONTENT-->
     <router-outlet></router-outlet>
-
-
   </div>
 </div>
 
@@ -52,6 +55,6 @@
   <ul>
     <li><a href="#">About Us</a></li>
     <li><a href="#">Contact Us</a></li>
-    <li><a href="#">Help</a></li>
+    <li><a routerLink="/chatsupport">Help</a></li>
   </ul>
 </footer>

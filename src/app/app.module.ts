@@ -25,11 +25,21 @@ import { NgxTypeaheadModule } from 'ngx-typeahead';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { MaterialModule } from './material/material.module';
+
 
 import { AuthGuard, JwtInterceptor, ErrorInterceptor } from './helpers';
+import { FormsModule } from '@angular/forms';
+
+import { ChatDialogComponent } from './components/chat-dialog/chat-dialog.component';
+import { ChatService } from './services/chat.service';
+import { WindowComponent } from './components/window/window.component';
+import { PortalModule } from '@angular/cdk/portal';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalComponent as ModalComponent } from './components/modal/modal.component';
 
 const routes: Routes = [
-
   { path: 'register', component: RegisterComponent },
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component:ProductDetailsComponent},
@@ -58,7 +68,10 @@ const routes: Routes = [
     AutoCompletgeComponent,
     LoginComponent,
     RegisterComponent,
-    AlertComponent
+    AlertComponent,
+    ChatDialogComponent,
+    WindowComponent,
+    ModalComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -67,12 +80,15 @@ const routes: Routes = [
     NgxTypeaheadModule,
     AutocompleteLibModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    PortalModule
   ],
   providers: [ProductService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider
+    fakeBackendProvider,ChatService
   ],
   bootstrap: [AppComponent]
 })

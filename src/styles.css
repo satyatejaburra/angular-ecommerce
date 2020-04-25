@@ -1072,4 +1072,40 @@ footer ul li{
       border:0;
       padding:8px 0
   }
+
+  mat-dialog-container#modal-component {
+    border: 3px solid #262626;
+    border-radius: 11px;
+    background-color: #1a1a1a;
+}
+
+  example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+mat-list {
+    height:500px;
+    max-height: 60%;
+    overflow-y: scroll;
+}
+
+mat-icon {
+    color: purple;
+    cursor: pointer;
+}
+
+form {
+    position: fixed;
+    bottom: 0;
+    left: 33%;
+}
+
+  @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 }

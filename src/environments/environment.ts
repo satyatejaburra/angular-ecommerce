@@ -10,7 +10,8 @@ export const environment = {
   categoryUrl: "http://localhost:8080/api/product-category",
 
 // login zuul url's
-basePostUrl: "http://localhost:8011/ecommerce-users/users"
+basePostUrl: "http://localhost:8011/ecommerce-user/users"
+
 
 };
 
