@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NO_ERRORS_SCHEMA, APP_INITIALIZER } from '@angular/core';
+
 
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -27,7 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { MaterialModule } from './material/material.module';
 
-
+import { CommonModule } from '@angular/common';
 import { AuthGuard, JwtInterceptor, ErrorInterceptor } from './helpers';
 import { FormsModule } from '@angular/forms';
 
@@ -40,8 +42,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalComponent as ModalComponent } from './components/modal/modal.component';
 import { Orderdetails } from './common/orderdetails';
 import { OrderComponent } from './components/order/order.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const routes: Routes = [
+  { path: 'payment', component: PaymentComponent },
   { path: 'order', component: OrderComponent },
   { path: 'register', component: RegisterComponent },
   {path: 'cart-details', component: CartDetailsComponent},
@@ -74,7 +78,9 @@ const routes: Routes = [
     AlertComponent,
     ChatDialogComponent,
     WindowComponent,
-    ModalComponent
+    ModalComponent,
+    OrderComponent,
+    PaymentComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -83,10 +89,11 @@ const routes: Routes = [
     NgxTypeaheadModule,
     AutocompleteLibModule,
     NgbModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
+
     MaterialModule,
-    PortalModule
+    PortalModule,CommonModule
   ],
   providers: [ProductService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

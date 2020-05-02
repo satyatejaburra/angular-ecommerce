@@ -9,8 +9,18 @@ export const environment = {
   productBynameUrl: "http://localhost:8080/api/products?page=0&size=150",
   categoryUrl: "http://localhost:8080/api/product-category",
 
+  //product zuul urls
+ // baseUrl: "http://localhost:8011/ecommerce-products/api/products",
+  //allProductUrl: "http://localhost:8011/ecommerce-products/api/products?page=0&size=150",
+  //productBynameUrl: "http://localhost:8011/ecommerce-products/api/products?page=0&size=150",
+  //categoryUrl: "http://localhost:8011/ecommerce-products/api/product-category",
+
 // login zuul url's
-basePostUrl: "http://localhost:8011/ecommerce-user/users"
+basePostUrl: "http://localhost:8011/ecommerce-user/users",
+
+//order service url's
+createOrderUrl: "http://localhost:8084/orders",
+
 
 
 };

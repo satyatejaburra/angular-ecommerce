@@ -55,10 +55,15 @@ export class CartDetailsComponent implements OnInit {
 
   checkOutItems(theCartItems:CartItem[])
   {
-    const orderDetails=new Orderdetails(theCartItems, this.totalPrice);
-    console.log("checkOutItems " + orderDetails.cartItems);
+    console.log("cart irtems in checkout are "+theCartItems[0].name);
+    console.log("cart irtems in checkout are "+theCartItems[1].name);
+    console.log("cart irtems in checkout are "+theCartItems[2].name);
 
-    this.orderService.placeOrder(orderDetails);
+    const orderDetails=new Orderdetails(theCartItems, this.totalPrice,"","","","","","","","","");
+    console.log("checkOutItems " + orderDetails.totalPrice);
+
+    this.orderService.saveOrderDetails(orderDetails);
+
     this.router.navigateByUrl(`order`);
 
   }
