@@ -4,6 +4,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 import { Orderdetails } from 'src/app/common/orderdetails';
 import { OrderService } from '../../services/order.service';
+import { Orderitem } from 'src/app/common/orderitem';
 
 @Component({
   selector: 'app-cart-details',
@@ -13,6 +14,7 @@ import { OrderService } from '../../services/order.service';
 export class CartDetailsComponent implements OnInit {
 
   cartItems: CartItem[] = [];
+  orderItems:Orderitem[]=[];
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
@@ -55,11 +57,11 @@ export class CartDetailsComponent implements OnInit {
 
   checkOutItems(theCartItems:CartItem[])
   {
-    console.log("cart irtems in checkout are "+theCartItems[0].name);
-    console.log("cart irtems in checkout are "+theCartItems[1].name);
-    console.log("cart irtems in checkout are "+theCartItems[2].name);
-
-    const orderDetails=new Orderdetails(theCartItems, this.totalPrice,"","","","","","","","","");
+   for(let theCartItem of theCartItems)
+   {
+    this.orderItems.push(new Orderitem(theCartItem));
+   }
+    const orderDetails=new Orderdetails(this.orderItems, this.totalPrice,"","","","","","","","","");
     console.log("checkOutItems " + orderDetails.totalPrice);
 
     this.orderService.saveOrderDetails(orderDetails);

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subject, Observable } from 'rxjs';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from './components/modal/modal.component';
+import { OrderService } from './services/order.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AppComponent {
   public msgArray: Observable<Array<any>> = new Observable<Array<any>>();
 
   constructor(
-        private router: Router,
+        private router: Router,private orderService:OrderService,
         private authenticationService: AuthenticationService  ,public matDialog: MatDialog  ) {
         this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
     }
@@ -44,6 +45,11 @@ export class AppComponent {
     login()
     {
       this.router.navigateByUrl(`login`);
+    }
+
+    getMyOrders()
+    {
+      this.orderService.getMyOrders("satyateja100")
     }
 
 

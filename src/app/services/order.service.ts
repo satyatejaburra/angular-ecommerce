@@ -1,15 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Orderdetails } from '../common/orderdetails';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Orderitem } from '../common/orderitem';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
+
+  getMyOrders(userId: string) {
+    const searchUrl=`${environment.getOrderByOrderIdUrl}?userId=${userId}`;
+return this.httpClient.get<Orderitem>(searchUrl).subscribe(
+  data => {
+  console.log(data);
+  this.router.navigateByUrl(`orderstatus`);
+
+  })}
+
+
+  orderItems: Orderitem[]
+
+  populateOrderDetails(theOrderItems: Orderitem[], userid: string) {
+    console.log("saving populatePaymentDetails order items"+theOrderItems);
+    this.orderItems=theOrderItems;
+  }
 
   //orderDetails: Subject<Orderdetails> = new Subject<Orderdetails>();
   orderDetails:Orderdetails;
@@ -19,7 +37,14 @@ export class OrderService {
   constructor(private router:Router, private httpClient:HttpClient) { }
 
   saveOrderDetails(theOrderDetails: Orderdetails) {
-    console.log("saving order "+theOrderDetails.cartItems.length);
+    console.log("saving order "+theOrderDetails.orderItems.length);
     this.orderDetails=theOrderDetails;
 }
 }
+
+
+interface GetResponseOrderItems{
+  _embedded:{
+    orderItems:Orderitem[];
+
+  }}

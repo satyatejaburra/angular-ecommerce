@@ -92,13 +92,13 @@
             <table class="table table-bordered">
 
 
-              <tr *ngFor="let tempCartItem of cartItems">
+              <tr *ngFor="let tempOrderItem of orderItems">
                   <td>
-                      <img src="{{ tempCartItem.imageUrl }}" class="img-responsive" width="50px" />
+                      <img src="{{ tempOrderItem.imageUrl }}" class="img-responsive" width="50px" />
                   </td>
                   <td>
-                      <p>{{ tempCartItem.name }}</p>
-                      <p>{{ tempCartItem.unitPrice | currency: 'USD' }}</p>
+                      <p>{{ tempOrderItem.name }}</p>
+                      <p>{{ tempOrderItem.unitPrice | currency: 'USD' }}</p>
                   </td>
                   <td>
                       <div class="items">
@@ -106,7 +106,7 @@
 
                           <div class="row no-gutters">
                               <div class="col ml-4 mr-2">
-                                  {{ tempCartItem.quantity }}
+                                  {{ tempOrderItem.quantity }}
                               </div>
 
                               <div class="col-8"></div>
@@ -114,7 +114,7 @@
 
                       </div>
 
-                      <p class="mt-2">Subtotal: {{ tempCartItem.quantity * tempCartItem.unitPrice | currency: 'USD' }}</p>
+                      <p class="mt-2">Subtotal: {{ tempOrderItem.quantity * tempOrderItem.unitPrice | currency: 'USD' }}</p>
                   </td>
               </tr>
               <tr>

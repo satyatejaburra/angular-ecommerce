@@ -20,6 +20,7 @@ basePostUrl: "http://localhost:8011/ecommerce-user/users",
 
 //order service url's
 createOrderUrl: "http://localhost:8084/orders",
+getOrderByOrderIdUrl: "http://localhost:8084/orders/userid"
 
 
 

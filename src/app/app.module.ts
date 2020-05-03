@@ -43,8 +43,13 @@ import { ModalComponent as ModalComponent } from './components/modal/modal.compo
 import { Orderdetails } from './common/orderdetails';
 import { OrderComponent } from './components/order/order.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { OrderstatusComponent } from './components/orderstatus/orderstatus.component';
+import { OrderdetailsComponent } from './components/orderdetails/orderdetails.component';
 
 const routes: Routes = [
+
+  { path: 'orderDetails', component: OrderdetailsComponent },
+  { path: 'orderstatus', component: OrderstatusComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'order', component: OrderComponent },
   { path: 'register', component: RegisterComponent },
@@ -80,7 +85,9 @@ const routes: Routes = [
     WindowComponent,
     ModalComponent,
     OrderComponent,
-    PaymentComponent
+    PaymentComponent,
+    OrderstatusComponent,
+    OrderdetailsComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

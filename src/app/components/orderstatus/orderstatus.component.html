@@ -1,0 +1,37 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <div *ngIf="orderItems.length > 0">
+      <table class="table table-bordered">
+        <tr>
+          <th width="20%">Order ID</th>
+          <th width="20%">Order Date</th>
+          <th width="20%">Order Item</th>
+          <th width="20%">Amount</th>
+          <th width="20%">PaymentStatus</th>
+        </tr>
+
+        <tr *ngFor="let tempOrder of orderItems">
+          <td>
+            <a routerLink="/orderDetails/{{ tempOrder.orderId }}">
+              {{tempOrder.orderId}}}
+            </a>
+          </td>
+          <td>{{tempOrder.orderDate |  date :'medium' }}</td>
+          <td>
+            <p>{{ tempOrder.name }}</p>
+          </td>
+
+          <td>{{tempOrder.unitPrice}}</td>
+          <td *ngIf="tempOrder.orderPaymentStatus == null" >Pending</td>
+          <td *ngIf="tempOrder.orderPaymentStatus != null" >{{tempOrder.orderPaymentStatus}}}}</td>
+        </tr>
+
+      </table>
+      </div>
+      <div *ngIf="orderItems.length == 0" class="alert alert-warning col-md-12" role="alert">
+        Your shopping cart is empty.
+    </div>
+    </div>
+  </div>
+</div>

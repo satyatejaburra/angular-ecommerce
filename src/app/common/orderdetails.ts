@@ -1,8 +1,9 @@
 import { CartItem } from './cart-item';
+import { Orderitem } from './orderitem';
 
 export class Orderdetails {
 
-  cartItems:CartItem[];
+  orderItems:Orderitem[];
   totalPrice:number;
   userId:String;
   address:string;
@@ -15,7 +16,7 @@ export class Orderdetails {
   zip:string;
   orderId:string
 
-  constructor(theCartItems:CartItem[],theTotalPrice:number , theUserid:string, theAddress:string,
+  constructor(theOrderItems:Orderitem[],theTotalPrice:number , theUserid:string, theAddress:string,
     theAddress2:string,
     theEmailId:string,
     theState:string,
@@ -25,7 +26,7 @@ export class Orderdetails {
     theLastName:string
     )
   {
-    this.cartItems=theCartItems;
+    this.orderItems=theOrderItems;
     this.totalPrice=theTotalPrice;
     this.userId=theUserid;
     this.address=theAddress;
