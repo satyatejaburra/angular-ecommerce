@@ -57,7 +57,9 @@ export class OrderComponent implements OnInit {
       this.orderService.populateOrderDetails(this.orderItems,data.userid);
       this.paymentService.populatePaymentDetails(this.orderDetails);
      // this.router.navigateByUrl(`payment`);
-     this.router.navigateByUrl(`orderstatus`);
+  //   this.router.navigateByUrl(`orderstatus`);
+     this.router.navigateByUrl(`ordertable`);
+
 
       }
     )

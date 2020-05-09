@@ -6,6 +6,8 @@ import { SearchComponent } from '../search/search.component';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { CartService } from '../../services/cart.service';
 import { CartItem } from 'src/app/common/cart-item';
+import { OktaAuthService } from '@okta/okta-angular';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-product-list',
@@ -23,11 +25,16 @@ thePageNumber: number=1;
 thePageSize:number=5;
 theTotalElements:number=0;
 thePreviousKeyword:string;
+isAuthenticated: boolean;
 
 
-  constructor(private productService: ProductService, private route:ActivatedRoute, private cartService:CartService) { }
+  constructor(private productService: ProductService, private route:ActivatedRoute,
+    private cartService:CartService,
+    public authService: AuthenticationService
+    ) { }
 
   ngOnInit(): void {
+    this.isAuthenticated=this.authService.isAuthenticated
     this.route.paramMap.subscribe(()=>{
     this.listProducts();})
   }
@@ -109,6 +116,7 @@ return  data=>{
     this.handleListProducts();
     }
   }
+
   handleSearchProducts() {
     console.log("handleSearchProducts");
     const theKeyword:string=this.route.snapshot.paramMap.get('keyword');

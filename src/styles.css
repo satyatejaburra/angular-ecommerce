@@ -130,7 +130,8 @@ a,a:hover{
 
 /*Layout Css*/
 .section-content-p35{
-  padding:0 35px
+  padding:35px;
+  max-height:30vh;
 }
 
 .page-wrapper{
@@ -146,7 +147,8 @@ a,a:hover{
 
 .main-content{
   padding-top:116px;
-  min-height:100vh
+  min-height:100vh;
+
 }
 
 aside.menu-sidebar.d-none.d-lg-block.clr{
@@ -884,7 +886,7 @@ footer ul li{
   }
    .main-content{
       padding-top:50px;
-      padding-bottom:100px
+      padding-bottom:100px;
   }
    .cart-area.d-n{
       display:none

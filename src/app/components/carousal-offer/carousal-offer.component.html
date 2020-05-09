@@ -1,0 +1,19 @@
+<div class="main-content">
+  <div class="section-content section-content-p35">
+      <div class="container-fluid">
+<ngb-carousel #carousel [interval]="1000" [pauseOnHover]="pauseOnHover" (slide)="onSlide($event)">
+  <ng-template ngbSlide *ngFor="let img of images; index as i">
+    <div class="carousel-caption">
+      <h3>My slide {{i + 1}} title</h3>
+    </div>
+    <a href="#" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="picsum-img-wrapper">
+        <img src="{{ img }}" class="img-responsive" width="1200px"  height="500px">
+      </div>
+    </a>
+  </ng-template>
+</ngb-carousel>
+
+</div>
+</div>
+</div>

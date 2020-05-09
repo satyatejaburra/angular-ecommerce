@@ -22,39 +22,81 @@
 
             <app-auto-completge></app-auto-completge>
 
-            <div class="row">
 
-              <button class="au-btn-submit" (click)="login()">
-                Login
-              </button>
-            </div>
             <div class="row">
-              <button class="au-btn-submit" (click)="openModal()">
-                Customer Support
-              </button>
+                <button class="au-btn-submit" *ngIf="!isAuthenticated" (click)="oktaAuth.loginRedirect()">
+                  Login
+                </button>
             </div>
 
-            <button class="au-btn-submit" (click)="getMyOrders()">
-              My Orders
-            </button>
+            <div class="row">
+              <div class="col">
+                <div ngbDropdown class="d-inline-block">
+                  <button *ngIf="isAuthenticated"  class="a.primary-btn" id="dropdownForm1" ngbDropdownToggle>
+                    <label>
+                       Hello {{currentUser}}<br/> Account info
+                    </label>
 
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="dropdownMenu" *ngIf="isAuthenticated">
+                    <button class="a.primary-btn" *ngIf="isAuthenticated" (click)="getMyOrders()">
+                      My Orders
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button class="a.primary-btn"  (click)="oktaAuth.logout()">
+                      Logout
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button class="a.primary-btn" (click)="openScrollableContent(longContent)">Contact Support</button>
+                  </div>
+                  <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title">Customer Support</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>One fine body&hellip;</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                    </div>
+                  </ng-template>
 
+                  <ng-template #longContent let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title">Customer Support</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                       <chat-dialog></chat-dialog>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                    </div>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
 
-            <app-cart-status></app-cart-status>
+            <app-cart-status *ngIf="isAuthenticated"></app-cart-status>
           </div>
           <div class="account-wrap"></div>
         </div>
       </div>
     </header>
     <!-- END HEADER DESKTOP-->
-
+<app-carousal-offer></app-carousal-offer>
     <!-- MAIN CONTENT-->
     <router-outlet></router-outlet>
   </div>
 </div>
 
 <!-- ENDS PAGE CONTAINER -->
-
+<!--
 <footer>
   <ul>
     <li><a href="#">About Us</a></li>
@@ -62,3 +104,4 @@
     <li><a routerLink="/chatsupport">Help</a></li>
   </ul>
 </footer>
+ -->

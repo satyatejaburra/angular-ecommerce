@@ -1,6 +1,5 @@
-<div class="page-wrapper">
 
-  <ng-container *ngFor="let message of messages | async">
+ <ng-container *ngFor="let message of messages | async">
 
     <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
                                     'to':   message.sentBy === 'user' }">
@@ -10,11 +9,16 @@
   </ng-container>
 
 
-  <label for="nameField">Your Message</label>
+
+  <div class="form-group">
+      <label for="nameField">Your Message</label>
+
+    <input type="text" class="form-control" [(ngModel)]="formValue"  (keyup.enter)="sendMessage()"  placeholder="Please type your request">
+
+  </div>
+  <button class="au-btn-submit" (click)="sendMessage()">Send</button>
 
 
-  <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text"><br>
 
-  <button (click)="sendMessage()">Send</button>
 
-</div>
+

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NO_ERRORS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 
-
+import {DecimalPipe} from '@angular/common';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -45,10 +45,18 @@ import { OrderComponent } from './components/order/order.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { OrderstatusComponent } from './components/orderstatus/orderstatus.component';
 import { OrderdetailsComponent } from './components/orderdetails/orderdetails.component';
+import { AuthRoutingModule } from './auth-routing.module';
+import { HomeComponent } from './home/home.component';
+import { OktaCallbackComponent } from '@okta/okta-angular';
+import { CarousalOfferComponent } from './components/carousal-offer/carousal-offer.component';
+import { OrderTableComponent } from './components/order-table/order-table.component';
+import { SortableDirective } from './directives/sortable.directive';
 
 const routes: Routes = [
 
   { path: 'orderDetails', component: OrderdetailsComponent },
+  { path: 'ordertable', component: OrderTableComponent },
+
   { path: 'orderstatus', component: OrderstatusComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'order', component: OrderComponent },
@@ -63,7 +71,15 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path: '', redirectTo: '/products', pathMatch: 'full'},
   {path: '**', redirectTo: '/products', pathMatch: 'full'},
-
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'implicit/callback',
+    component: OktaCallbackComponent
+  },
   { path: '', component: ProductDetailsComponent, canActivate: [AuthGuard] }
 
 ];
@@ -87,7 +103,10 @@ const routes: Routes = [
     OrderComponent,
     PaymentComponent,
     OrderstatusComponent,
-    OrderdetailsComponent
+    OrderdetailsComponent,
+    CarousalOfferComponent,
+    OrderTableComponent,
+    SortableDirective
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -100,13 +119,14 @@ const routes: Routes = [
     ReactiveFormsModule,
 
     MaterialModule,
-    PortalModule,CommonModule
+    PortalModule,CommonModule, AuthRoutingModule
   ],
   providers: [ProductService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider,ChatService
+    fakeBackendProvider,ChatService,DecimalPipe
   ],
-  bootstrap: [AppComponent]
+  exports: [OrderTableComponent],
+  bootstrap: [AppComponent,OrderTableComponent]
 })
 export class AppModule { }
